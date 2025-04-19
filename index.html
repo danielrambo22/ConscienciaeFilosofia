@@ -135,6 +135,7 @@
       margin-top: 20px;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      position: relative;
     }
 
     .post h3 {
@@ -146,6 +147,9 @@
     }
 
     .delete-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
       background-color: transparent;
       color: #e11d48;
       border: none;
@@ -156,28 +160,6 @@
     .delete-btn:hover {
       color: #be123c;
     }
-
-    .password-container {
-      margin: 20px auto;
-      max-width: 900px;
-      padding: 0 30px;
-    }
-
-    .password-input {
-      width: calc(100% - 150px);
-      padding: 10px;
-      border-radius: 8px;
-      border: 2px solid #ffd700;
-      background-color: rgba(255, 255, 255, 0.1);
-      color: #fff;
-      margin-right: 10px;
-    }
-
-    /* Esconde o formulário de postagem até a senha ser validada */
-    #postForm {
-      display: none;
-    }
-
   </style>
 </head>
 <body>
@@ -192,16 +174,6 @@
     <a href="#">Sobre</a>
     <a href="#">Contatos</a>
   </nav>
-
-  <div class="password-container">
-    <input id="passwordInput" type="password" class="password-input" placeholder="Digite a senha para comentar" />
-    <button id="enableCommentingBtn" onclick="enableCommenting()">Liberar Comentários</button>
-  </div>
-
-  <div class="password-container">
-    <input id="deletePasswordInput" type="password" class="password-input" placeholder="Digite a senha para deletar post" />
-    <button id="enableDeleteBtn" onclick="enableDelete()">Liberar Exclusão</button>
-  </div>
 
   <div class="content">
     <h2>Compartilhe seus pensamentos!</h2>
@@ -236,34 +208,7 @@
     const postForm = document.getElementById('postForm');
     const postsContainer = document.getElementById('postsContainer');
     const noPostsMessage = document.getElementById('noPostsMessage');
-    const passwordInput = document.getElementById('passwordInput');
-    const deletePasswordInput = document.getElementById('deletePasswordInput');
-    const enableCommentingBtn = document.getElementById('enableCommentingBtn');
-    const enableDeleteBtn = document.getElementById('enableDeleteBtn');
     const password = 'Olavinho@1';
-
-    function enableCommenting() {
-      const enteredPassword = passwordInput.value;
-      if (enteredPassword === password) {
-        enableCommentingBtn.innerText = 'Comentários Liberados!';
-        enableCommentingBtn.disabled = true;
-        passwordInput.disabled = true;
-        postForm.style.display = 'block';
-      } else {
-        alert('Senha incorreta! Tente novamente.');
-      }
-    }
-
-    function enableDelete() {
-      const enteredPassword = deletePasswordInput.value;
-      if (enteredPassword === password) {
-        enableDeleteBtn.innerText = 'Exclusão Liberada!';
-        enableDeleteBtn.disabled = true;
-        deletePasswordInput.disabled = true;
-      } else {
-        alert('Senha incorreta! Tente novamente.');
-      }
-    }
 
     function displayPosts() {
       const posts = JSON.parse(localStorage.getItem('posts')) || [];
@@ -278,4 +223,60 @@
       categories.forEach((category) => {
         const categoryPosts = posts.filter(post => post.category === category);
         if (categoryPosts.length > 0) {
-          postsContainer.inner
+          postsContainer.innerHTML += `
+            <div class="category">
+              <h3>${category}</h3>
+              ${categoryPosts.map(post => `
+                <div class="post">
+                  <button class="delete-btn" onclick="deletePost('${post.title}')">❌</button>
+                  <h3>${post.title}</h3>
+                  <p><em>${post.date}</em></p>
+                  <p>${post.content}</p>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        }
+      });
+    }
+
+    function deletePost(title) {
+      const enteredPassword = prompt('Digite a senha para deletar:');
+      if (enteredPassword === password) {
+        const posts = JSON.parse(localStorage.getItem('posts')) || [];
+        const updatedPosts = posts.filter(post => post.title !== title);
+        localStorage.setItem('posts', JSON.stringify(updatedPosts));
+        displayPosts();
+      } else {
+        alert('Senha incorreta! Não foi possível deletar.');
+      }
+    }
+
+    postForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const enteredPassword = prompt('Digite a senha para publicar:');
+      if (enteredPassword !== password) {
+        alert('Senha incorreta! Comentário não publicado.');
+        return;
+      }
+
+      const newPost = {
+        title: document.getElementById('title').value,
+        content: document.getElementById('content').value,
+        category: document.getElementById('category').value,
+        date: new Date().toLocaleString()
+      };
+
+      const posts = JSON.parse(localStorage.getItem('posts')) || [];
+      posts.push(newPost);
+      localStorage.setItem('posts', JSON.stringify(posts));
+
+      displayPosts();
+      postForm.reset();
+    });
+
+    displayPosts();
+  </script>
+</body>
+</html>
