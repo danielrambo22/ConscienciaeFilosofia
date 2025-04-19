@@ -1,1 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Café, Consciência e Filosofia</title>
+  <style>
+    /* Resetando margens e padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    /* Corpo da página com fundo de imagem de água e cores ajustadas */
+    body {
+      font-family: Arial, sans-serif;
+      background: url('https://gestaoludika.com.br/wp-content/uploads/2019/08/Mentorias-Gest%C3%A3o-da-Aplicabilidade-da-Intelig%C3%AAncia-Emocional-%E2%80%93-Vis%C3%A3o-da-%C3%81guia-Pr%C3%A1tica-1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Cabeçalho com imagem de águia e texto dourado */
+    header {
+      background-color: rgba(0, 0, 0, 0.8);
+      text-align: center;
+      padding: 30px 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #ffd700; /* Dourado */
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .eagle-icon {
+      width: 60px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    /* Barra de navegação */
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 15px 0;
+    }
+
+    nav a {
+      color: #ffd700;
+      text-decoration: none;
+      font-size: 1.2rem;
+      margin: 0 20px;
+      text-transform: uppercase;
+    }
+
+    nav a:hover {
+      color: #2563eb; /* Azul */
+    }
+
+    /* Conteúdo principal */
+    .content {
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: rgba(0, 0, 0, 0.7); /* Fundo preto translúcido */
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    }
+
+    .content h2 {
+      font-size: 2rem;
+      color: #ffd700; /* Dourado */
+      margin-bottom: 20px;
+    }
+
+    .content p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    label {
+      font-size: 1rem;
+      color: #ffd700; /* Dourado */
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 2px solid #ffd700;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    select {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 2px solid #ffd700;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    button {
+      padding: 12px 25px;
+      background-color: #1e3a8a; /* Azul */
+      color: #fff;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2563eb; /* Azul mais claro */
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.8);
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.8);
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      color: #fff;
+    }
+
+    /* Posts organizados por categoria */
+    .category {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+    }
+
+    .category h3 {
+      color: #ffd700; /* Dourado */
+      margin-bottom: 10px;
+    }
+
+    .post {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .post h3 {
+      color: #ffd700; /* Dourado */
+    }
+
+    .post p {
+      color: #fff;
+    }
+
+    .delete-btn {
+      background-color: transparent;
+      color: #e11d48; /* Vermelho para deletar */
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .delete-btn:hover {
+      color: #be123c; /* Vermelho escuro */
+    }
+
+    /* Campo de senha */
+    .password-container {
+      margin-bottom: 20px;
+    }
+
+    .password-input {
+      padding: 10px;
+      border-radius: 8px;
+      border: 2px solid #ffd700;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Cabeçalho com imagem de águia -->
+  <header>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Eagle_logo.svg" alt="Águia" class="eagle-icon">
+    <h1>Café, Consciência e Filosofia - O Canto ☕🧠</h1>
+  </header>
+
+  <!-- Barra de navegação -->
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Sobre</a>
+    <a href="#">Contatos</a>
+  </nav>
+
+  <!-- Campo de senha para liberar comentários -->
+  <div class="password-container">
+    <input id="passwordInput" type="password" class="password-input" placeholder="Digite a senha para comentar" />
+    <button id="enableCommentingBtn" onclick="enableCommenting()">Liberar Comentários</button>
+  </div>
+
+  <!-- Campo de senha para deletar posts -->
+  <div class="password-container">
+    <input id="deletePasswordInput" type="password" class="password-input" placeholder="Digite a senha para deletar post" />
+    <button id="enableDeleteBtn" onclick="enableDelete()">Liberar Exclusão</button>
+  </div>
+
+  <!-- Conteúdo principal -->
+  <div class="content">
+    <h2>Compartilhe seus pensamentos!</h2>
+    <form id="postForm">
+      <label for="title">Título:</label><br>
+      <input type="text" id="title" name="title" required><br><br>
+
+      <label for="content">Conteúdo:</label><br>
+      <textarea id="content" name="content" rows="4" required></textarea><br><br>
+
+      <label for="category">Categoria:</label><br>
+      <select id="category" name="category" required>
+        <option value="Filosofia">Filosofia</option>
+        <option value="Reflexões">Reflexões</option>
+        <option value="Desabafo">Desabafo</option>
+      </select><br><br>
+
+      <button type="submit">Publicar</button>
+    </form>
+  </div>
+
+  <!-- Container para posts organizados por categoria -->
+  <div class="content" id="postsContainer">
+    <h2>Reflexões Publicadas</h2>
+    <p id="noPostsMessage">Nenhuma reflexão publicada ainda. Seja o primeiro!</p>
+  </div>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2025 Café, Consciência e Filosofia. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    const postForm = document.getElementById('postForm');
+    const postsContainer = document.getElementById('postsContainer');
+    const noPostsMessage = document.getElementById('noPostsMessage');
+    const passwordInput = document.getElementById('passwordInput');
+    const deletePasswordInput = document.getElementById('deletePasswordInput');
+    const enableCommentingBtn = document.getElementById('enableCommentingBtn');
+    const enableDeleteBtn = document.getElementById('enableDeleteBtn');
+    const password = 'Olavinho@1';  // Senha definida
+
+    // Função para habilitar comentários
+    function enableCommenting() {
+      const enteredPassword = passwordInput.value;
+      if (enteredPassword === password) {
+        enableCommentingBtn.innerText = 'Comentários Liberados!';
+        enableCommentingBtn.disabled = true;
+        passwordInput.disabled = true;
+        postForm.style.display = 'block'; // Mostrar formulário de postagens
+      } else {
+        alert('Senha incorreta! Tente novamente.');
+      }
+    }
+
+    // Função para habilitar exclusão de posts
+    function enableDelete() {
+      const enteredPassword = deletePasswordInput.value;
+      if (enteredPassword === password) {
+        enableDeleteBtn.innerText = 'Exclusão Liberada!';
+        enableDeleteBtn.disabled = true;
+        deletePasswordInput.disabled = true;
+      } else {
+        alert('Senha incorreta! Tente novamente.');
+      }
+    }
+
+    // Exibir posts armazenados no localStorage
+    function displayPosts() {
+      const posts = JSON.parse(localStorage.getItem('posts')) || [];
+      postsContainer.innerHTML = '<h2>Reflexões Publicadas</h2>';
+
+      if (posts.length === 0) {
+        postsContainer.innerHTML += '<p id="noPostsMessage">Nenhuma reflexão publicada ainda. Seja o primeiro!</p>';
+        return;
+      }
+
+      const categories = ["Filosofia", "Reflexões", "Desabafo"];
+      categories.forEach((category) => {
+        const categoryPosts = posts.filter(post => post.category === category);
+        if (categoryPosts.length > 0) {
+          postsContainer.innerHTML += ` 
+            <div class="category">
+              <h3>${category}</h3>
+              ${categoryPosts.map(post => `
+                <div class="post">
+                  <h3>${post.title}</h3>
+                  <p><em>${post.date}</em></p>
+                  <p>${post.content}</p>
+                  <button class="delete-btn" onclick="deletePost('${post.title}')">❌</button>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        }
+      });
+    }
+
+    // Função para excluir post
+    function deletePost(title) {
+      if (deletePasswordInput.value === password) {
+        const posts = JSON.parse(localStorage.getItem('posts')) || [];
+        const updatedPosts = posts.filter(post => post.title !== title);
+        localStorage.setItem('posts', JSON.stringify(updatedPosts));
+        displayPosts(); // Atualizar a exibição dos posts
+      } else {
+        alert('Senha incorreta! Não foi possível deletar.');
+      }
+    }
+
+    // Ao enviar o formulário, salvar o post no localStorage
+    postForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const newPost = {
+        title: document.getElementById('title').value,
+        content: document.getElementById('content').value,
+        category: document.getElementById('category').value,
+        date: new Date().toLocaleString()
+      };
+
+      const posts = JSON.parse(localStorage.getItem('posts')) || [];
+      posts.push(newPost);
+      localStorage.setItem('posts', JSON.stringify(posts));
+
+      displayPosts(); // Atualizar a exibição dos posts
+      postForm.reset(); // Limpar o formulário
+    });
+
+    // Exibir os posts ao carregar a página
+    displayPosts();
+  </script>
+
+</body>
+</html>
